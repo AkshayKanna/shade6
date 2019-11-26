@@ -71,7 +71,7 @@ export default class BodyService extends React.Component {
         return (
             <div>
                 <Navbar />
-                <div class="jumbotron text-center text-white" style={{ fontFamily: "'Work Sans', sans-serif", backgroundImage: "linear-gradient(-65deg, #b721ff 0%, #21d4fd 100%)" }}>
+                <div class="jumbotron text-center text-white mt-5" style={{ fontFamily: "'Work Sans', sans-serif", backgroundImage: "linear-gradient(-65deg, #b721ff 0%, #21d4fd 100%)" }}>
                     <h1 class="display-4">BODY SERVICES</h1>
                     <p class="lead">TRUST SALON & SPA TO HELP YOU DETOX AND REJUVENATE!</p>
                 </div>

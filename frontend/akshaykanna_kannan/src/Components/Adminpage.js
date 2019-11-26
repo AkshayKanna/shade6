@@ -1,7 +1,7 @@
 import React from "react";
 import axios from "axios";
 import Navbar from "./Navbar";
-import {Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 
 export default class Adminpage extends React.Component {
@@ -10,7 +10,32 @@ export default class Adminpage extends React.Component {
 
         this.state = {
             array1: [],
+            array2: [],
+            first_name: ""
         }
+    }
+    get_value = (e) => {
+        this.setState({
+            [e.target.name]: e.target.value
+        })
+    }
+    aggregation = (e) => {
+        let object = {
+            first_name: this.state.first_name,
+        }
+        axios({
+            method: 'post',
+            url: 'http://localhost:3007/user/find',
+            data: object
+        })
+            .then((response) => {
+                console.log("response is", response.data.users)
+                this.setState({
+                    array2: response.data.users
+                });
+            })
+            .catch((err) => alert(err))
+
     }
     bodyservice = (e) => {
         axios({
@@ -39,19 +64,19 @@ export default class Adminpage extends React.Component {
             .catch((err) => alert(err))
     }
     render() {
-        console.log(this.state.array1)
+        console.log(this.state.array2)
         return (
             <div>
                 <Navbar />
-                <div class="jumbotron text-center" style={{ fontFamily: "'Work Sans', sans-serif" }}>
+                <div class="jumbotron text-center mt-5" style={{ fontFamily: "'Work Sans', sans-serif" }}>
                     <h1 class="display-4">ADMIN SERVICE</h1>
                     <p class="lead">SEE ALL THE APPOINTMENTS BASED ON TIME SLOTS  !!!!</p>
                     <p class="lead">IN ASCENDING ORDER SO THAT TO SEE !!!!</p>
-                    <button type="button" className="btn btn-primary " onClick={this.bodyservice}>Sort By time for Body</button>&nbsp;&nbsp;
-                    <button type="button" className="btn btn-primary " onClick={this.skinservice}>Sort By time for Skin</button>
+                    <button type="button" className="btn btn-primary " onClick={this.bodyservice}>Sort By time for Body</button>
+                    <div>
+                        <button type="button" className="btn btn-primary mt-2" onClick={this.skinservice}>Sort By time for Skin</button>
+                    </div>
                 </div>
-
-
 
                 <div className="container-fluid mt-5" style={{ fontFamily: "'Work Sans', sans-serif" }}>
                     <table class="table text-center table-bordered">

@@ -27,6 +27,9 @@ export default class Navbar extends React.Component {
                                 <Link to="/contact" class="nav-link" href="#"><i class="fas fa-address-card">&nbsp;&nbsp;</i>Contact</Link>
                             </li>
                             <li class="nav-item">
+                                <Link to="/aggregation" class="nav-link" href="#"><i class="fas fa-search">&nbsp;&nbsp;</i>Find By Type</Link>
+                            </li>
+                            <li class="nav-item">
                                 <Link to="/admin">
                                     <button type="button" className="btn btn-outline-primary"><i class="fas fa-user-shield">&nbsp;&nbsp;</i>Admin</button>
                                 </Link>

@@ -82,12 +82,21 @@ app.get("/user/delete/:id", function (req, res) {
 })
 
 app.post("/admin", function (req, res) {
-    db.collection("admin").insertOne({ "email": req.body.email, "password": req.body.password }, function (err, response) {
-        console.log(response)
-        res.json({ "Admin": response })
-    })
-});
 
+    user = db.collection("admin").findOne({ "email": req.body.email }, function (err, response) {
+        console.log(response)
+    })
+    if (user == null) {
+        db.collection("admin").insertOne({ "email": req.body.email, "password": req.body.password }, function (err, response) {
+            console.log(response)
+            res.json("ACCOUNT CREATED")
+        })
+    }
+    else {
+        res.json("Email Exists")
+    }
+
+});
 
 app.get("/user/sort", function (req, res) {
     db.collection("bodyService").find({}).sort("time_slot", -1).toArray(function (err, response) {
@@ -151,5 +160,15 @@ app.get("/user_skin/delete_skin/:id", function (req, res) {
     })
 })
 
+
+//Aggregation Operation
+app.post("/user/find", function (req, res) {
+    db.collection("bodyService").aggregate([
+        { $match: { "first_name": req.body.first_name } }, { $group: { _id: "$type" } }
+    ]).toArray(function (err, response) {
+        res.json({ "users": response })
+        console.log(JSON.stringify(response))
+    })
+})
 app.listen(3007)
 console.log("Running Server")

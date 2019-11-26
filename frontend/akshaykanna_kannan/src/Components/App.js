@@ -12,6 +12,7 @@ import Adminpage from "./Adminpage";
 import Deleteskin from "./Deleteskin";
 import ShowDetailsskin from "./ShowDetailskin";
 import Updateskin from "./Updateskin";
+import Aggreagation from "./Aggregation";
 
 
 class App extends React.Component {
@@ -30,6 +31,7 @@ class App extends React.Component {
                 <Route path="/user_skin/delete_skin/:id" component={Deleteskin} />
                 <Route exact path="/user_skin/show_skin/:id" component={ShowDetailsskin} />
                 <Route exact path="/user_skin/update_skin/:id" component={Updateskin} />
+                <Route exact path="/aggregation" component={Aggreagation} />
             </div>
         );
     }

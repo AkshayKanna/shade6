@@ -50,7 +50,7 @@ export default class ShowDetails extends React.Component {
         return (
             <div>
                 <Navbar />
-                <div class="jumbotron text-center" style={{ fontFamily: "'Work Sans', sans-serif" }}>
+                <div class="jumbotron text-center mt-5" style={{ fontFamily: "'Work Sans', sans-serif" }}>
                     <h1 class="display-4">BODY SERVICE</h1>
                     <p class="lead">FULL DETAILS OF USER</p>
                 </div>
